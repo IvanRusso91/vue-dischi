@@ -1,15 +1,22 @@
 <template>
   <div class="sfondo">
     <div class="container d-flex ir-dischi">
-      
-    </div>
 
+      <CardsComp />
+
+    </div>
   </div>
 </template>
 
 <script>
+
+import CardsComp from '@/components/CardsComp'
+
 export default {
   name:'MainComp',
+  components :{
+    CardsComp,
+  },
 }
 </script>
 

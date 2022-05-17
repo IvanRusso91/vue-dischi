@@ -2,11 +2,11 @@
 
   <div class="ir-card">
     <div class="cardimg">
-      <img src="" alt="">
+      <img :src="discs.poster" :alt="discs.title">
 
       <div class="testo">
-        <h3>nome</h3>
-        <p>artista <br> anno</p>
+        <h5>{{discs.title}}</h5>
+        <p>{{discs.author}} <br> {{discs.year}}</p>
       </div>
     
     </div>
@@ -17,6 +17,9 @@
 <script>
 export default {
   name:'CardsCopm',
+  props:{
+    discs:Object,
+  }
 }
 </script>
 
@@ -26,21 +29,27 @@ export default {
 @import '../assets/style/vars';
 
 .ir-card{
-  width: 200px;
-  height: 300px;
-  margin-top: 80px;
+  width: 220px;
+  height: 370px;
+  margin: 50px 30px 0px 0px;
   background-color:$primary-color;
   .cardimg{
-    width: 160px;
-    height: 160px;
-    margin: 16px;
-    background-color: rgb(0, 17, 255);
+    margin: 15px;
+    img{
+      width: 190px;
+    }
   }
   .testo{
-    color: $third-color;
     text-align: center;
-    margin-top: 150px;
-    h3{
+    margin-top: 15px;
+    p{
+      font-weight: bold;
+      color: $third-color;
+      font-size: 1.2rem;
+    }
+    h5{
+      text-transform: uppercase;
+      margin-bottom: 15px;
       color: white;
     }
   }

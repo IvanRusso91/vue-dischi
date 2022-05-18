@@ -2,7 +2,13 @@
   <div class="sfondo">
     <div class="container d-flex ir-dischi">
 
+      <div v-if="isLoading" class="load">
+        <img src="https://giffiles.alphacoders.com/307/30777.gif" alt="">
+
+        <h1>Loading.....</h1>
+      </div>
       <CardsComp
+      v-else
       v-for="(item, index) in discsArray" :key="`disc-${index}`"
       :discs = "item"/>
 
@@ -23,6 +29,7 @@ export default {
     return{
       baseUrl:'https://flynn.boolean.careers/exercises/api/array/music',
       discsArray: [],
+      isLoading: true,
 
     }
   },
@@ -36,6 +43,9 @@ export default {
       .then(r =>{
         console.log(r.data.response);
         this.discsArray = (r.data.response);
+         setTimeout(()=>{
+          this.isLoading = false;
+          },3000)
       })
     }
   }
@@ -54,6 +64,15 @@ export default {
   .ir-dischi{
     flex-wrap: wrap;
     
+    .load{
+      margin-top: 100px;
+      margin-left: 450px;
+      h1{
+        color: white;
+        text-align: center;
+        margin-top: 50px;
+      }
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 <template>
 <div>
-  
-  <MainTopComp />
+
+  <MainTopComp @gender: dropGender/>
 
   <div class="sfondo">
     <div class="container d-flex ir-dischi">
@@ -37,6 +37,8 @@ export default {
       baseUrl:'https://flynn.boolean.careers/exercises/api/array/music',
       discsArray: [],
       isLoading: true,
+      albumGender:[],
+      selectType:'',
 
     }
   },
@@ -54,9 +56,42 @@ export default {
           this.isLoading = false;
           },3000)
       })
+    },
+
+    genderSelect(gender){
+      // console.log(gender);
+      this.selectType = gender;
+      
+    },
+
+    genderPush(){
+      this.discsArray.forEach(disc =>{
+        if(!this.albumGender.includes(disc.genre)){
+          this.albumGender.push(disc.genre);
+        }
+      });
+      console.log(this.albumGender);
     }
-  }
-}
+  },
+
+  computed:{
+    filterGenderAlbum(){
+      let albumType = []
+      if(this.selectType === 'none'){
+        albumType = this.discsArray
+      }
+      else{
+        albumType = this.discsArray.filter(disc =>{
+          return disc.genre.toUpperCase().includes(this.selectType.toUpperCase());
+        })
+      }
+      return albumType;
+    },
+   
+    
+  },
+ 
+};
 </script>
 
 <style lang="scss" scoped>

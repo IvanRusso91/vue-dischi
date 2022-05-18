@@ -11,11 +11,11 @@
         <select name="form-control my-3"
                 v-model="dropGender"
                 @change= "$emit('gender', dropGender)">
-                
+
           <option value="none">Seleziona un genere</option>
           <option value="gender"
                   v-for="(gender, index) in albumArray"
-                  :key="`album${index}`">Rock</option>
+                  :key="`album${index}`">{{gender}}</option>
 
         </select>
 
@@ -33,7 +33,7 @@ export default {
   },
   data(){
     return{
-      dropGender :'none'
+      dropGender :'none',
     }
   }
 }

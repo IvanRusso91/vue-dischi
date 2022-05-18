@@ -1,7 +1,7 @@
 <template>
 <div>
 
-  <MainTopComp @gender: dropGender/>
+  <MainTopComp @type = "genreSelect"  />
 
   <div class="sfondo">
     <div class="container d-flex ir-dischi">
@@ -13,7 +13,7 @@
       </div>
       <CardsComp
       v-else
-      v-for="(item, index) in discsArray" :key="`disc-${index}`"
+      v-for="(item, index) in filterGenreAlbum" :key="`disc-${index}`"
       :discs = "item"/>
 
     </div>
@@ -37,8 +37,8 @@ export default {
       baseUrl:'https://flynn.boolean.careers/exercises/api/array/music',
       discsArray: [],
       isLoading: true,
-      albumGender:[],
       selectType:'',
+      albumGenre :[],
 
     }
   },
@@ -58,30 +58,29 @@ export default {
       })
     },
 
-    genderSelect(gender){
-      // console.log(gender);
-      this.selectType = gender;
-      
-    },
+    genreSelect(stringa){
+      // console.log(stringa);
+      this.selectType = stringa;
+    },  
+    
 
-    genderPush(){
+    genrePush(){
       this.discsArray.forEach(disc =>{
-        if(!this.albumGender.includes(disc.genre)){
-          this.albumGender.push(disc.genre);
+        if(!this.albumGenre.includes(disc.genre)){
+          this.albumGenre.push(disc.genre);
         }
       });
-      console.log(this.albumGender);
     }
   },
 
   computed:{
-    filterGenderAlbum(){
-      let albumType = []
-      if(this.selectType === 'none'){
-        albumType = this.discsArray
+    filterGenreAlbum(){
+       let albumType = [];
+       if(this.selectType === ''){
+         albumType = this.discsArray
       }
-      else{
-        albumType = this.discsArray.filter(disc =>{
+       else{
+         albumType = this.discsArray.filter(disc =>{
           return disc.genre.toUpperCase().includes(this.selectType.toUpperCase());
         })
       }

@@ -1,22 +1,22 @@
 <template>
   <div class="container-fluid ir-head ">
     <div class="row">
-
       <div class="col-6 left">
         <img src="../assets/img/logo-small.svg" alt="">
       </div>
 
       <div class="col-6 right">
 
-        <select name="form-control my-3"
-                v-model="dropGender"
-                @change= "$emit('gender', dropGender)">
-
-          <option value="none">Seleziona un genere</option>
-          <option value="gender"
-                  v-for="(gender, index) in albumArray"
-                  :key="`album${index}`">{{gender}}</option>
-
+        <select name="form-control my-3" 
+                v-model="dropGenre"
+                @change= "$emit('type',dropGenre);
+">
+                
+          <option value="">Seleziona un genere</option>
+          <option value="Rock">Rock</option>
+          <option value="Pop">Pop</option>
+          <option value="Jazz">Jazz</option>
+          <option value="Metal">Metal</option>
         </select>
 
       </div>
@@ -28,15 +28,17 @@
 <script>
 export default {
   nome: 'MainTopComp',
-  props:{
-    albumArray: Array,
-  },
   data(){
     return{
-      dropGender :'none',
+      dropGenre : '',
     }
-  }
-}
+  },
+  
+  methods:{
+    
+    
+  },
+}  
 </script>
 
 <style lang="scss" scoped>

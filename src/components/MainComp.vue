@@ -1,4 +1,8 @@
 <template>
+<div>
+  
+  <MainTopComp />
+
   <div class="sfondo">
     <div class="container d-flex ir-dischi">
 
@@ -14,16 +18,19 @@
 
     </div>
   </div>
+</div>  
 </template>
 
 <script>
 import axios from 'axios';
 import CardsComp from '@/components/CardsComp'
+import MainTopComp from '../components/MainTopComp';
 
 export default {
   name:'MainComp',
   components :{
     CardsComp,
+    MainTopComp,
   },
   data(){
     return{

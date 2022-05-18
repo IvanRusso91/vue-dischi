@@ -42,11 +42,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 @import '../assets/style/general';
 @import '../assets/style/vars';
-
-
 .ir-head{
   height: 80px;
   background-color: $primary-color;
@@ -62,7 +59,6 @@ export default {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
     select{
       color: white;
       padding: 10px 20px;
@@ -70,9 +66,7 @@ export default {
       border-radius: 10px;
       background-color: rgb(85, 165, 85);
     }
-
   }
-
   }
   
   
@@ -84,7 +78,4 @@ export default {
     }
   }
 }
-
-
-
 </style>

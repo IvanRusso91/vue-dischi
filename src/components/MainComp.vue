@@ -1,7 +1,7 @@
 <template>
 <div>
 
-  <MainTopComp @type = "genreSelect"  />
+  <MainTopComp @type = "genreSelect" />
 
   <div class="sfondo">
     <div class="container d-flex ir-dischi">
@@ -39,6 +39,7 @@ export default {
       isLoading: true,
       selectType:'',
       albumGenre :[],
+
 
     }
   },

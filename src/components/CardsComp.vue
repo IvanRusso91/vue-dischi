@@ -33,6 +33,14 @@ export default {
   height: 370px;
   margin: 50px 30px 0px 0px;
   background-color:$primary-color;
+  opacity: 0.7;
+  transition: 1s;;
+  &:hover{
+    cursor: pointer;
+    opacity: 1;
+    transform: scale(1.1);
+  }
+ 
   .cardimg{
     margin: 15px;
     img{

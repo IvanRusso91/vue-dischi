@@ -9,14 +9,21 @@
 
         <select name="form-control my-3" 
                 v-model="dropGenre"
-                @change= "$emit('type',dropGenre);
-">
+                @change= "$emit('type',dropGenre);">
                 
+          
+         
           <option value="">Seleziona un genere</option>
-          <option value="Rock">Rock</option>
-          <option value="Pop">Pop</option>
+          <option 
+              v-for="(genre, index) in albumGen" 
+              :key="`genre${index}`" 
+              :value= "genre">
+              {{genre}}
+          </option>
+          
+          <!-- <option value="Pop">Pop</option>
           <option value="Jazz">Jazz</option>
-          <option value="Metal">Metal</option>
+          <option value="Metal">Metal</option> -->
         </select>
 
       </div>
@@ -28,16 +35,16 @@
 <script>
 export default {
   nome: 'MainTopComp',
+  genreArray: [],
+  props:{
+    albumGen: Array,
+  },
   data(){
     return{
       dropGenre : '',
     }
   },
   
-  methods:{
-    
-    
-  },
 }  
 </script>
 
@@ -49,27 +56,26 @@ export default {
   background-color: $primary-color;
   .row{
     .left{
-    padding: 10px 20px;
-    img{
-      width: 50px;
-      filter: invert(30%) sepia(10%) saturate(2500%) hue-rotate(80deg) brightness(110%) contrast(80%); 
-    }
-  } 
-  .right{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    select{
-      color: white;
       padding: 10px 20px;
-      margin-right: 20px;
-      border-radius: 10px;
-      background-color: rgb(85, 165, 85);
+      img{
+        width: 50px;
+        filter: invert(30%) sepia(10%) saturate(2500%) hue-rotate(80deg) brightness(110%) contrast(80%); 
+      }
+    } 
+    .right{
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      select{
+        color: white;
+        padding: 10px 20px;
+        margin-right: 20px;
+        border-radius: 10px;
+        background-color: rgb(85, 165, 85);
+      }
     }
   }
-  }
-  
-  
+   
   .btn-box{
     margin-top: 20px;
     margin-right: 15px;

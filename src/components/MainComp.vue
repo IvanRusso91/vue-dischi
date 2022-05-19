@@ -1,7 +1,7 @@
 <template>
 <div>
 
-  <MainTopComp @type = "genreSelect" />
+  <MainTopComp @type = "genreSelect"  :albumGen= "albumGenre" />
 
   <div class="sfondo">
     <div class="container d-flex ir-dischi">
@@ -44,7 +44,8 @@ export default {
     }
   },
   mounted(){
-    this.getAPI()
+    this.getAPI();
+      
   },
 
   methods:{
@@ -53,14 +54,16 @@ export default {
       .then(r =>{
         console.log(r.data.response);
         this.discsArray = (r.data.response);
-         setTimeout(()=>{
+        this.genrePush();
+
+        setTimeout(()=>{
           this.isLoading = false;
-          },3000)
+        },1000)
       })
     },
 
     genreSelect(stringa){
-      // console.log(stringa);
+      //console.log(stringa);
       this.selectType = stringa;
     },  
     
@@ -70,6 +73,7 @@ export default {
         if(!this.albumGenre.includes(disc.genre)){
           this.albumGenre.push(disc.genre);
         }
+        // console.log(disc.genre);
       });
     }
   },
